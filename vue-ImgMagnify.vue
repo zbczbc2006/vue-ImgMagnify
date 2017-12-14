@@ -1,6 +1,6 @@
 <template>
   <div class="img-magnify">
-    <img v-lazy="src" class="img" @click="isMagnify=true">
+    <img :src="src" class="img" @click="isMagnify=true">
     <transition enter-active-class="fadeIn" leave-active-class="fadeOut">
       <div v-if="isMagnify&&src" class="magnify" @click="isMagnify=false">
         <div class="magnify-back"></div>
