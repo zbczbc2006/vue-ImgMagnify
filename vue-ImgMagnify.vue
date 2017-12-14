@@ -1,6 +1,6 @@
 <template>
   <div class="img-magnify">
-    <img :src="src" class="img" @click="isMagnify=true">
+    <img :src="src" class="img" @click="isMagnify=true" @error="imgerrHandler">
     <transition enter-active-class="fadeIn" leave-active-class="fadeOut">
       <div v-if="isMagnify&&src" class="magnify" @click="isMagnify=false">
         <div class="magnify-back"></div>
@@ -12,16 +12,17 @@
 <script>
 export default {
   name: 'img-magnify',
-  props: {
-    src: {
-      default: '',
-    },
-  },
+  props: ['src', 'imgerr'],
   data() {
     return {
       isMagnify: false,
     }
-  }
+  },
+  methods: {
+    imgerrHandler(e) {
+      e.target.src = this.imgerr;
+    },
+  },
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
